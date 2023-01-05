@@ -1,0 +1,372 @@
+/* #region general non-specific styles */
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    --text-color: hsl(36, 5%, 81%);
+    --accent-2: hsl(180, 90%, 40%);
+    --accent-1: hsl(180, 90%, 34%);
+
+    --accent-3: hsla(180, 90%, 40%, 0.27);
+    --background-main: hsl(200, 6%, 10%);
+    --background-sec: hsl(210, 5%, 16%);
+    --background-thrd: hsl(220, 4%, 22%);
+
+    /* Light Mode Colors */
+    /* --text-color: hsl(0, 0%, 0%);
+    --accent-2: hsl(180, 90%, 40%);
+    --accent-1: hsl(180, 100%, 30%);
+
+    --accent-3: hsla(180, 90%, 40%, 0.27);
+    --background-main: hsl(0, 0%, 98%);
+    --background-sec: hsl(0, 0%, 87%);
+    --background-thrd: hsl(0, 0%, 76%); */
+}
+
+* {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: initial;
+}
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.5rem;
+}
+h3 {
+    font-size: 1.17rem;
+}
+a {
+    color: var(--accent-1);
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--background-thrd); 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--background-sec); 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--background-thrd); 
+}
+
+#svgg #path1{
+    fill: var(--accent-2);
+}
+#svgg #path2{
+    fill: var(--accent-1);
+}
+/* #endregion */
+
+body {
+    background-color: var(--background-main);
+    margin: 0;
+}
+.scaffold {
+    margin: 1rem;
+    display: grid;
+    height: calc(100vh - 2rem);  /* calc used for equal margin on all sides, [3rem => 2rem] */
+    grid-template-columns: min-content auto;
+    grid-template-areas:
+        "nav main";
+}
+
+side-nav {
+    grid-area: nav;
+    background-color: var(--background-sec);
+    border-right: 3px solid var(--accent-1);
+    margin-right: 1rem;
+    border-radius: 1rem;
+}
+.logo {
+    height: 12rem;
+    margin: 0.6rem;
+}
+.btn {
+    display: block;
+    background-color: var(--background-thrd);
+    border: 0;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 0.8rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: large;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: var(--text-color);
+}
+.btn:active,
+.btn:hover {
+    background-color: var(--background-sec);
+}
+.active {
+    background-color: var(--background-sec);
+}
+
+
+main {
+    grid-area: main;
+    margin-inline: 1rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    background-color: var(--background-sec);
+}
+.inner_scaffold {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+h1 {
+    color: var(--accent-1);
+    background-color: var(--accent-3);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.cell {
+    background-color: var(--background-thrd);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-rows: min-content auto;
+    grid-template-areas: 
+        "title title"
+        "give want";
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cell h2 {
+    color: var(--accent-1);
+    margin: 0;
+}
+.cell-header {
+    background-color: var(--accent-3);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: fit-content;
+    grid-area: title;
+    display: grid;
+    grid-template-areas: 
+        "id save email phone";
+    grid-template-columns: 1fr auto auto auto;
+    gap: 1rem;
+}
+
+.save > svg,
+.phone > svg,
+.email > svg{
+    height: 2rem;
+    fill: var(--accent-1);
+}
+.save,
+.phone,
+.email {
+    background-color: var(--accent-3);
+    border: 0;
+    border-radius: 0.3rem;
+    padding-top: 0.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: var(--text-color);
+}
+:is(.save, .email, .phone):hover,
+:is(.save, .email, .phone):active {
+    background-color: var(--accent-1);
+}
+.save {
+    grid-area: save;
+}
+.email {
+    grid-area: email;
+}
+.phone {
+    grid-area: phone;
+}
+
+.give, 
+.want {
+    background-color: var(--background-sec);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: fit-content;
+    margin: 0.5rem;
+    margin-top: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: var(--text-color);
+}
+.give > h3,
+.want > h3 {
+    color: var(--accent-1);
+    background-color: var(--accent-3);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+.give ul,
+.want ul {
+    margin: 0;
+    list-style-type: none;
+}
+:is(.give, .want) li::before {
+    content: "⮞";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: var(--accent-1); /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1rem; /* Also needed for space (tweak if needed) */
+    margin-left: -1.8rem; /* Also needed for space (tweak if needed) */
+    margin-right: 0.4rem;
+}
+
+.saved {
+    background-color: var(--accent-3);
+}
+.matched {
+    background-color: var(--accent-1);
+}
+.matched h2 {
+    color: var(--text-color);
+}
+.matched svg {
+    fill: var(--text-color);
+}
+
+.plus {
+    background-color: var(--accent-1);
+    width: 6rem;
+    height: 6rem;
+    position: fixed;
+    right: 5rem;
+    bottom: 5rem;
+    font-size: 70px;
+    border: none;
+    border-radius: 1000px;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.plus:hover {
+    background-color: var(--accent-2);
+}
+
+/* #region overlay*/
+.darken {
+    position: fixed;
+    top: 0px; 
+    left: 0px; 
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgb(100, 100, 100); 
+    mix-blend-mode: multiply; 
+    z-index: 1;
+}
+._dummy {
+    display: contents;
+}
+
+.mypost {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-sec);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 2;
+    color: var(--text-color);
+}
+.note {
+    display: inline-block;
+    margin: 0.8rem;
+    margin-top: -0.5rem;
+    color: var(--accent-1);
+}
+.divi {
+    background-color: var(--background-thrd);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    /* width: fit-content; */
+    margin: 0.5rem;
+    margin-top: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: var(--text-color);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.inp {
+    background-color: var(--background-main);
+    border-color: var(--accent-1);
+    border-radius: 1000px;
+    border-style: solid;
+    text-align: center;
+    height: 2rem;
+    color: var(--text-color);
+    transition: background-color 0.3s;
+}
+.inp:focus,
+.inp:active, 
+.inp:hover {
+    outline: none;
+    background-color: var(--background-sec);
+}
+.divi:last-of-type {
+    background-color: var(--background-sec);
+    box-shadow: none;
+}
+.action-btn {
+    display: block;
+    background-color: var(--background-thrd);
+    border: 0;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: 80%;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: large;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: var(--text-color);
+}
+.action-btn:active,
+.action-btn:hover {
+    background-color: var(--background-sec);
+}
+#submeter {
+    background-color: var(--accent-3);
+}
+#submeter:active,
+#submeter:hover {
+    background-color: var(--accent-1);
+}
+#eliminar {
+    background-color: rgb(150, 10, 10);
+}
+#eliminar:active,
+#eliminar:hover {
+    background-color: rgb(120, 5, 5);
+}
+
+.cliplink {
+    display: inline-block;
+    margin: 0.8rem;
+    margin-top: -1.6rem;
+    color: var(--accent-2);
+    /* border-bottom: 1px solid var(--accent-2); */
+    cursor: pointer;
+}
+/* #endregion */
